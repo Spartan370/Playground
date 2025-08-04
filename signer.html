@@ -6,12 +6,12 @@
     <title>IPA Signer - sideloading.org</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/signer.css">
     <link rel="shortcut icon" href="#">
 </head>
-<body>
+<body data-theme="dark">
 
     <header class="header">
         <div class="container">
@@ -25,83 +25,50 @@
                     <a href="#" class="nav-link">Guides</a>
                     <a href="#" class="nav-link">Contact</a>
                 </nav>
-                <button class="menu-toggle" id="menuToggle" aria-label="Open mobile menu">
-                    <span class="menu-icon"></span>
-                    <span class="menu-icon"></span>
-                </button>
+                <div class="header-actions">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode">
+                        <div class="toggle-icon moon"></div>
+                    </button>
+                    <button class="menu-toggle" id="menuToggle" aria-label="Open mobile menu">
+                        <span class="menu-icon"></span>
+                        <span class="menu-icon"></span>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
 
     <main class="main-content">
-        <div class="container">
-            <section class="signer-section">
-                <h1 class="section-heading">Sign Your IPA File</h1>
-                <p class="section-subtitle">Securely sign your application with your own developer credentials. The process is fast, easy, and completely private.</p>
-
-                <div class="signer-card">
-                    <div class="signer-step-indicator">
-                        <div class="step active">1</div>
-                        <div class="step-line"></div>
-                        <div class="step">2</div>
-                        <div class="step-line"></div>
-                        <div class="step">3</div>
+        <div class="container signer-container">
+            <h1 class="page-title">IPA Signing Service</h1>
+            <p class="page-subtitle">Securely sign your IPA files for seamless installation on your iOS device.</p>
+            
+            <div class="signer-card">
+                <h2 class="signer-title">Upload IPA</h2>
+                <p class="signer-description">Drag and drop your .ipa file here, or click to browse.</p>
+                <form id="signerForm" class="signer-form" enctype="multipart/form-data">
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-icon-container">
+                            <div class="upload-icon-gold"></div>
+                        </div>
+                        <input type="file" id="ipaFileInput" name="ipaFile" accept=".ipa" required>
+                        <p class="upload-text">Drag & Drop or <span class="browse-link">Browse</span></p>
+                    </div>
+                    
+                    <div class="file-info-box" id="fileInfoBox" style="display: none;">
+                        <p>File: <span id="fileName"></span></p>
                     </div>
 
-                    <form id="signer-form" class="signer-form">
-                        <div class="form-step active" id="step-1">
-                            <h3 class="step-title">Upload IPA File</h3>
-                            <div class="file-upload-box">
-                                <div class="upload-icon-placeholder"></div>
-                                <p class="upload-text">Drag & Drop your IPA file here or <label for="ipa-file" class="browse-link">Browse</label></p>
-                                <input type="file" id="ipa-file" accept=".ipa" hidden>
-                            </div>
-                            <button type="button" class="next-step-button" data-step="1">Next</button>
-                        </div>
+                    <div class="signer-actions">
+                        <button type="submit" class="btn btn-primary" id="signButton">
+                            Sign IPA
+                            <span class="loading-spinner" style="display: none;"></span>
+                        </button>
+                    </div>
+                </form>
 
-                        <div class="form-step" id="step-2">
-                            <h3 class="step-title">Enter Signing Credentials</h3>
-                            <div class="form-field">
-                                <label for="certificate" class="field-label">Developer Certificate (.p12)</label>
-                                <div class="file-input-wrapper">
-                                    <input type="text" id="cert-filename" placeholder="No file selected..." readonly>
-                                    <label for="certificate" class="file-button">Choose File</label>
-                                    <input type="file" id="certificate" accept=".p12" hidden>
-                                </div>
-                            </div>
-                            <div class="form-field">
-                                <label for="provisioning" class="field-label">Provisioning Profile (.mobileprovision)</label>
-                                <div class="file-input-wrapper">
-                                    <input type="text" id="prov-filename" placeholder="No file selected..." readonly>
-                                    <label for="provisioning" class="file-button">Choose File</label>
-                                    <input type="file" id="provisioning" accept=".mobileprovision" hidden>
-                                </div>
-                            </div>
-                            <div class="form-actions">
-                                <button type="button" class="back-step-button" data-step="2">Back</button>
-                                <button type="button" class="next-step-button" data-step="2">Sign IPA</button>
-                            </div>
-                        </div>
-
-                        <div class="form-step" id="step-3">
-                            <h3 class="step-title">Signing in Progress...</h3>
-                            <div class="progress-container">
-                                <div class="progress-bar"></div>
-                            </div>
-                            <p class="progress-message">Please wait, your file is being signed.</p>
-                            <div class="download-container">
-                                <div class="download-icon-placeholder"></div>
-                                <h3 class="download-title">Signing Complete!</h3>
-                                <p class="download-message">Your signed IPA is ready for download.</p>
-                                <a href="#" class="cta-button" id="download-link" download>
-                                    Download Signed IPA
-                                    <svg class="cta-icon" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                                </a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </section>
+                <div class="signer-status" id="signerStatus"></div>
+            </div>
         </div>
     </main>
 
@@ -110,9 +77,6 @@
             <div class="footer-column">
                 <span class="logo-text">sideloading.org</span>
                 <p class="footer-description">The professional signing service for iOS applications.</p>
-                <div class="social-links">
-                    <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.164 6.83 9.49.5.092.682-.218.682-.483 0-.237-.008-.867-.013-1.7-2.782.604-3.368-1.34-3.368-1.34-.455-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.004.07 1.532 1.03 1.532 1.03.892 1.528 2.341 1.085 2.91.83.091-.645.349-1.085.635-1.336-2.22-.252-4.555-1.11-4.555-4.943 0-1.09.39-1.984 1.03-2.68-.103-.253-.448-1.27.098-2.648 0 0 .84-.268 2.75 1.026A9.564 9.564 0 0112 6.845c.85.004 1.705.115 2.504.336 1.909-1.294 2.748-1.026 2.748-1.026.546 1.378.202 2.395.099 2.648.64.696 1.03 1.59 1.03 2.68 0 3.843-2.336 4.686-4.564 4.935.359.309.678.92.678 1.855 0 1.337-.012 2.418-.012 2.743 0 .267.18.579.688.482C20.137 20.163 23 16.418 23 12c0-5.523-4.477-10-10-10z"/></svg></a>
-                </div>
             </div>
             <div class="footer-column">
                 <h4 class="footer-heading">Navigation</h4>
@@ -130,13 +94,21 @@
                     <li><a href="#">Terms of Service</a></li>
                 </ul>
             </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">Connect</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.164 6.83 9.49.5.092.682-.218.682-.483 0-.237-.008-.867-.013-1.7-2.782.604-3.368-1.34-3.368-1.34-.455-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.004.07 1.532 1.03 1.532 1.03.892 1.528 2.341 1.085 2.91.83.091-.645.349-1.085.635-1.336-2.22-.252-4.555-1.11-4.555-4.943 0-1.09.39-1.984 1.03-2.68-.103-.253-.448-1.27.098-2.648 0 0 .84-.268 2.75 1.026A9.564 9.564 0 0112 6.845c.85.004 1.705.115 2.504.336 1.909-1.294 2.748-1.026 2.748-1.026.546 1.378.202 2.395.099 2.648.64.696 1.03 1.59 1.03 2.68 0 3.843-2.336 4.686-4.564 4.935.359.309.678.92.678 1.855 0 1.337-.012 2.418-.012 2.743 0 .267.18.579.688.482C20.137 20.163 23 16.418 23 12c0-5.523-4.477-10-10-10z"/></svg></a>
+                </div>
+            </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2025 sideloading.org. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="js/general.js"></script>
+    <script src="js/main.js"></script>
     <script src="js/signer.js"></script>
+    <script src="js/snowfall.js"></script>
+
 </body>
 </html>

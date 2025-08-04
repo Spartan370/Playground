@@ -6,12 +6,12 @@
     <title>sideloading.org - The Ultimate IPA Signing Service</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="shortcut icon" href="#">
 </head>
-<body>
+<body data-theme="dark">
 
     <header class="header">
         <div class="container">
@@ -25,77 +25,63 @@
                     <a href="#" class="nav-link">Guides</a>
                     <a href="#" class="nav-link">Contact</a>
                 </nav>
-                <button class="menu-toggle" id="menuToggle" aria-label="Open mobile menu">
-                    <span class="menu-icon"></span>
-                    <span class="menu-icon"></span>
-                </button>
+                <div class="header-actions">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode">
+                        <div class="toggle-icon moon"></div>
+                    </button>
+                    <button class="menu-toggle" id="menuToggle" aria-label="Open mobile menu">
+                        <span class="menu-icon"></span>
+                        <span class="menu-icon"></span>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
 
     <main class="main-content">
         <div class="container">
-            <section class="hero-section">
+            <section class="hero-section" id="hero">
+                <div class="snowfall-container"></div>
                 <div class="hero-content">
                     <h1 class="hero-title">Your Trusted IPA Signing Platform</h1>
                     <p class="hero-subtitle">sideloading.org provides a seamless and secure way to sign and install any IPA file on your iOS device, without a jailbreak.</p>
                     <div class="hero-actions">
-                        <a href="signer.html" class="cta-button">
+                        <a href="signer.html" class="btn btn-primary">
                             Start Signing Now
-                            <svg class="cta-icon" viewBox="0 0 24 24"><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/></svg>
+                            <svg class="btn-icon" viewBox="0 0 24 24"><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/></svg>
                         </a>
-                        <a href="#" class="learn-more-link">Learn More</a>
+                        <a href="#" class="btn btn-secondary">Learn More</a>
                     </div>
                 </div>
             </section>
 
-            <section class="features-section">
+            <section class="section features-section">
                 <h2 class="section-heading">Why Choose sideloading.org?</h2>
                 <div class="features-grid">
                     <div class="feature-card">
-                        <div class="feature-icon-placeholder"></div>
-                        <h3 class="card-title">Ultimate Security</h3>
-                        <p class="card-description">Your privacy is our top priority. All files and credentials are encrypted and processed in a secure environment.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon-placeholder"></div>
+                        <div class="feature-icon" data-icon="target"></div>
                         <h3 class="card-title">Simple & Intuitive</h3>
                         <p class="card-description">Our user-friendly interface guides you through the signing process in just a few clicks, no technical expertise required.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon-placeholder"></div>
-                        <h3 class="card-title">Cross-Device Compatible</h3>
-                        <p class="card-description">Access our platform from any device. Our site is fully optimized for mobile, tablet, and desktop.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon-placeholder"></div>
+                        <div class="feature-icon" data-icon="clock"></div>
                         <h3 class="card-title">Fast Signing</h3>
                         <p class="card-description">Our high-speed servers ensure a quick turnaround time, getting you back to your apps faster.</p>
                     </div>
-                </div>
-            </section>
-
-            <section class="info-section">
-                <div class="info-container">
-                    <div class="info-item">
-                        <div class="info-image-placeholder"></div>
-                        <div class="info-content">
-                            <h3 class="info-title">Professional & Reliable Service</h3>
-                            <p class="info-description">Whether you're a developer testing your apps or a user installing custom software, our professional-grade service guarantees a reliable experience. We provide a stable and consistent platform for all your sideloading needs.</p>
-                        </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" data-icon="cyber-security"></div>
+                        <h3 class="card-title">Ultimate Security</h3>
+                        <p class="card-description">Your privacy is our top priority. All files and credentials are encrypted and processed in a secure environment.</p>
                     </div>
-                    <div class="info-item reverse-layout">
-                        <div class="info-image-placeholder"></div>
-                        <div class="info-content">
-                            <h3 class="info-title">Step-by-Step Guidance</h3>
-                            <p class="info-description">New to sideloading? Our comprehensive guides and resources walk you through every step, from obtaining your certificate to installing your first signed IPA. We are here to make the process as simple as possible for everyone.</p>
-                            <a href="#" class="learn-more-link">Explore Guides</a>
-                        </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" data-icon="device"></div>
+                        <h3 class="card-title">Cross-Device Compatible</h3>
+                        <p class="card-description">Access our platform from any device. Our site is fully optimized for mobile, tablet, and desktop.</p>
                     </div>
                 </div>
             </section>
 
-            <section class="faq-section">
+            <section class="section faq-section">
                 <h2 class="section-heading">Frequently Asked Questions</h2>
                 <div class="faq-grid">
                     <div class="faq-card">
@@ -107,23 +93,19 @@
                         <p class="faq-answer">Sideloading itself is safe. However, the safety of the application depends entirely on the source. Always use trusted IPA files from reputable sources.</p>
                     </div>
                     <div class="faq-card">
-                        <h3 class="faq-question">Do I need a paid developer account?</h3>
-                        <p class="faq-answer">Yes, our service requires a valid Apple Developer Certificate and Provisioning Profile, which can be obtained through a paid Apple Developer account.</p>
-                    </div>
-                    <div class="faq-card">
                         <h3 class="faq-question">What is an IPA file?</h3>
                         <p class="faq-answer">An IPA file is an iOS App Store Package file that is the standard format for packaging and distributing applications on iOS devices.</p>
                     </div>
                 </div>
             </section>
 
-            <section class="cta-banner">
+            <section class="section cta-banner">
                 <div class="cta-content">
                     <h2 class="cta-title">Start Your Sideloading Journey Today</h2>
                     <p class="cta-text">Unleash the true power of your device with a few simple clicks. Join the community of advanced users now.</p>
-                    <a href="signer.html" class="cta-button-secondary">
+                    <a href="signer.html" class="btn btn-primary">
                         Go to Signer
-                        <svg class="cta-icon" viewBox="0 0 24 24"><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/></svg>
+                        <svg class="btn-icon" viewBox="0 0 24 24"><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/></svg>
                     </a>
                 </div>
             </section>
@@ -135,9 +117,6 @@
             <div class="footer-column">
                 <span class="logo-text">sideloading.org</span>
                 <p class="footer-description">The professional signing service for iOS applications.</p>
-                <div class="social-links">
-                    <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.164 6.83 9.49.5.092.682-.218.682-.483 0-.237-.008-.867-.013-1.7-2.782.604-3.368-1.34-3.368-1.34-.455-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.004.07 1.532 1.03 1.532 1.03.892 1.528 2.341 1.085 2.91.83.091-.645.349-1.085.635-1.336-2.22-.252-4.555-1.11-4.555-4.943 0-1.09.39-1.984 1.03-2.68-.103-.253-.448-1.27.098-2.648 0 0 .84-.268 2.75 1.026A9.564 9.564 0 0112 6.845c.85.004 1.705.115 2.504.336 1.909-1.294 2.748-1.026 2.748-1.026.546 1.378.202 2.395.099 2.648.64.696 1.03 1.59 1.03 2.68 0 3.843-2.336 4.686-4.564 4.935.359.309.678.92.678 1.855 0 1.337-.012 2.418-.012 2.743 0 .267.18.579.688.482C20.137 20.163 23 16.418 23 12c0-5.523-4.477-10-10-10z"/></svg></a>
-                </div>
             </div>
             <div class="footer-column">
                 <h4 class="footer-heading">Navigation</h4>
@@ -155,13 +134,20 @@
                     <li><a href="#">Terms of Service</a></li>
                 </ul>
             </div>
+            <div class="footer-column">
+                <h4 class="footer-heading">Connect</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.164 6.83 9.49.5.092.682-.218.682-.483 0-.237-.008-.867-.013-1.7-2.782.604-3.368-1.34-3.368-1.34-.455-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.004.07 1.532 1.03 1.532 1.03.892 1.528 2.341 1.085 2.91.83.091-.645.349-1.085.635-1.336-2.22-.252-4.555-1.11-4.555-4.943 0-1.09.39-1.984 1.03-2.68-.103-.253-.448-1.27.098-2.648 0 0 .84-.268 2.75 1.026A9.564 9.564 0 0112 6.845c.85.004 1.705.115 2.504.336 1.909-1.294 2.748-1.026 2.748-1.026.546 1.378.202 2.395.099 2.648.64.696 1.03 1.59 1.03 2.68 0 3.843-2.336 4.686-4.564 4.935.359.309.678.92.678 1.855 0 1.337-.012 2.418-.012 2.743 0 .267.18.579.688.482C20.137 20.163 23 16.418 23 12c0-5.523-4.477-10-10-10z"/></svg></a>
+                </div>
+            </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2025 sideloading.org. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="js/general.js"></script>
-    <script src="js/home.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/snowfall.js"></script>
+
 </body>
 </html>
