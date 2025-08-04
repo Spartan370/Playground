@@ -1,144 +1,397 @@
-/* Signer Page Styles */
-.signer-container {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-    text-align: center;
+.main-content {
+    text-align: left;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 0 6rem 0;
 }
 
 .page-title {
-    font-size: 3rem;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    color: var(--gold-color);
+    margin-bottom: 1rem;
+    text-align: center;
 }
 
-.page-subtitle {
+.page-description {
     font-size: 1.2rem;
     color: var(--text-secondary);
-    margin-bottom: 3rem;
-}
-
-.signer-card {
-    background-color: var(--bg-secondary);
-    border-radius: 20px;
-    padding: 3rem 2rem;
+    text-align: center;
     max-width: 600px;
-    margin: 0 auto;
-    box-shadow: var(--shadow);
-    border: 1px solid var(--border-color);
+    margin: 0 auto 4rem;
 }
 
-.signer-title {
-    font-size: 2rem;
+.form-section {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-title {
+    font-size: 1.75rem;
     font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    flex-grow: 1;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group-full {
+    grid-column: 1 / -1;
+}
+
+.form-label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
 }
 
-.signer-description {
-    color: var(--text-secondary);
-    margin-bottom: 2rem;
-}
-
-.signer-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.upload-area {
+.form-input, .form-select {
     width: 100%;
-    height: 200px;
-    border: 3px dashed var(--border-color);
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    margin-bottom: 1.5rem;
-}
-
-.upload-area:hover {
-    border-color: var(--primary-color);
-}
-
-.upload-icon-container {
-    width: 100px;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.upload-icon-gold {
-    width: 60px;
-    height: 60px;
-    background-image: url('https://imgur.com/gnbl5Lq.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    filter: invert(70%) sepia(21%) saturate(2891%) hue-rotate(359deg) brightness(101%) contrast(100%);
-}
-
-.upload-area.has-file .upload-icon-gold {
-    animation: fadeOut 0.3s forwards;
-}
-
-@keyframes fadeOut {
-    to {
-        opacity: 0;
-        visibility: hidden;
-        transform: scale(0.8);
-    }
-}
-
-.upload-text {
-    color: var(--text-secondary);
+    padding: 0.75rem 1rem;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
     font-size: 1rem;
-    margin-top: 1rem;
+    transition: all 0.2s ease;
 }
 
-.browse-link {
-    color: var(--primary-color);
-    text-decoration: underline;
+.form-input::placeholder, .form-select option {
+    color: var(--text-secondary);
 }
 
-#ipaFileInput {
+.form-input:focus, .form-select:focus {
+    outline: none;
+    border-color: var(--gold-color);
+    box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+}
+
+.file-upload {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.file-upload:hover {
+    border-color: var(--gold-color);
+}
+
+.file-upload span {
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.9rem;
+    padding: 0 0.5rem;
+}
+
+.upload-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--gold-color);
+    color: var(--bg-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.upload-button:hover {
+    filter: brightness(0.9);
+}
+
+.upload-button svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--bg-primary);
+}
+
+.hidden-input {
     display: none;
 }
 
-.file-info-box {
-    width: 100%;
-    background-color: var(--bg-primary);
-    padding: 1rem;
-    border-radius: 10px;
-    border: 1px solid var(--border-color);
-    text-align: left;
-    margin-bottom: 2rem;
-}
-
-.signer-actions {
-    width: 100%;
-}
-
-#signButton {
-    width: 100%;
+.toggle-group {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+}
+
+.toggle-label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--border-color);
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: var(--gold-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(22px);
+}
+
+.slider.round {
+    border-radius: 28px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.advanced-settings .section-title {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.extras-toggle {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.extras-toggle:hover {
+    background-color: var(--border-color);
+}
+
+.extras-toggle .chevron-icon {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    transition: transform 0.3s ease;
+}
+
+.extras-content {
+    margin-top: 2rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+
+.extras-content.active {
+    max-height: 500px;
+    transition: max-height 0.4s ease-in;
+}
+
+.hidden {
+    display: none;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.cta-button {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    position: relative;
+    padding: 1rem 2.5rem;
 }
 
-.loading-spinner {
+.loader {
+    width: 24px;
+    height: 24px;
+    border: 3px solid var(--text-primary);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: spin 1s linear infinite;
+}
+
+.generated-info {
+    margin-top: 3rem;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.info-item {
+    font-size: 1rem;
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+}
+
+.info-item strong {
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+.download-link {
+    color: var(--gold-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.download-link:hover {
+    text-decoration: underline;
+    color: var(--primary-color);
+}
+
+/* Notification styling */
+.notification-container {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 5000;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.notification {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    box-shadow: var(--shadow);
+    max-width: 400px;
+    animation: slideIn 0.4s ease-out forwards;
+}
+
+.notification.success {
+    background-color: #f0fff4;
+    border-color: #38a169;
+    color: #276749;
+}
+
+[data-theme="dark"] .notification.success {
+    background-color: #1c4532;
+    border-color: #38a169;
+    color: #9ae6b4;
+}
+
+.notification.error {
+    background-color: #fff5f5;
+    border-color: #e53e3e;
+    color: #9b2c2c;
+}
+
+[data-theme="dark"] .notification.error {
+    background-color: #5d1616;
+    border-color: #e53e3e;
+    color: #fca5a5;
+}
+
+.notification p {
+    margin: 0;
+    font-weight: 500;
+}
+
+.notification.fade-out {
+    animation: fadeOut 0.4s ease-in forwards;
+}
+
+.notification .close-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: inherit;
+    opacity: 0.6;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+.notification .close-button:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.notification .close-button svg {
     width: 20px;
     height: 20px;
-    border: 2px solid var(--bg-primary);
-    border-top-color: transparent;
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-    display: none;
+    fill: currentColor;
 }
+
 
 @keyframes spin {
     to {
@@ -146,34 +399,62 @@
     }
 }
 
-.signer-status {
-    margin-top: 2rem;
-    font-weight: 500;
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
-.status-success {
-    color: #4CAF50;
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
 }
 
-.status-error {
-    color: #f44336;
-}
-
-/* Media Queries for signer page */
-@media (max-width: 600px) {
-    .page-title {
-        font-size: 2.5rem;
+@media (max-width: 768px) {
+    .main-content {
+        padding: 2rem 1rem 4rem 1rem;
     }
 
-    .page-subtitle {
-        font-size: 1rem;
+    .form-section {
+        padding: 1.5rem;
     }
 
-    .signer-card {
-        padding: 2rem 1rem;
-    }
-
-    .signer-title {
+    .section-title {
         font-size: 1.5rem;
+    }
+
+    .file-upload {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .upload-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .notification {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .notification-container {
+        top: auto;
+        bottom: 1rem;
+        right: 1rem;
+        left: 1rem;
+        width: auto;
     }
 }

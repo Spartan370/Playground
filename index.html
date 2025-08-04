@@ -1,153 +1,144 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sideloading.org - The Ultimate IPA Signing Service</title>
+    <title>Sideloading.org - Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/home.css">
-    <link rel="shortcut icon" href="#">
 </head>
-<body data-theme="dark">
-
-    <header class="header">
-        <div class="container">
-            <div class="header-inner">
-                <a href="index.html" class="logo-link">
-                    <span class="logo-text">sideloading.org</span>
-                </a>
-                <nav class="main-nav">
-                    <a href="index.html" class="nav-link active">Home</a>
-                    <a href="signer.html" class="nav-link">Signer</a>
-                    <a href="#" class="nav-link">Guides</a>
-                    <a href="#" class="nav-link">Contact</a>
-                </nav>
-                <div class="header-actions">
-                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode">
-                        <div class="toggle-icon moon"></div>
-                    </button>
-                    <button class="menu-toggle" id="menuToggle" aria-label="Open mobile menu">
-                        <span class="menu-icon"></span>
-                        <span class="menu-icon"></span>
-                    </button>
-                </div>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-left">
+                <button class="hamburger-menu" id="hamburgerMenu" aria-label="Open navigation menu">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </button>
             </div>
-        </div>
-    </header>
+            <div class="header-right">
+                <nav class="header-nav">
+                    <a href="index.html" class="header-nav-link active">Home</a>
+                    <a href="signer.html" class="header-nav-link">Signer</a>
+                    <a href="#" class="header-nav-link">Guides</a>
+                </nav>
+            </div>
+        </header>
 
-    <main class="main-content">
-        <div class="container">
-            <section class="hero-section" id="hero">
-                <div class="snowfall-container"></div>
-                <div class="hero-content">
-                    <h1 class="hero-title">Your Trusted IPA Signing Platform</h1>
-                    <p class="hero-subtitle">sideloading.org provides a seamless and secure way to sign and install any IPA file on your iOS device, without a jailbreak.</p>
-                    <div class="hero-actions">
-                        <a href="signer.html" class="btn btn-primary">
-                            Start Signing Now
-                            <svg class="btn-icon" viewBox="0 0 24 24"><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/></svg>
-                        </a>
-                        <a href="#" class="btn btn-secondary">Learn More</a>
-                    </div>
-                </div>
-            </section>
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="sidebar-logo">
+                    <svg viewBox="0 0 48 48">
+                        <path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-2.9 29.8v-4.65l6.5-6.5h-6.5v-4.65l10.9 10.9-10.9 4.65z"/>
+                    </svg>
+                    Sideloading.org
+                </a>
+                <button class="sidebar-close" id="sidebarClose" aria-label="Close navigation menu">
+                    <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                </button>
+            </div>
+            <div class="sidebar-content">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-nav-item"><a href="index.html" class="sidebar-nav-link active">Home</a></li>
+                    <li class="sidebar-nav-item"><a href="signer.html" class="sidebar-nav-link">Signer</a></li>
+                    <li class="sidebar-nav-item"><a href="#" class="sidebar-nav-link">Guides</a></li>
+                    <li class="sidebar-nav-item">
+                        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                            <svg class="sun-icon" viewBox="0 0 24 24"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.766 5.634a.75.75 0 011.06 0l1.592 1.592a.75.75 0 01-1.06 1.06L7.766 6.694a.75.75 0 010-1.06zm8.47 0a.75.75 0 010 1.06l-1.592 1.592a.75.75 0 11-1.06-1.06l1.592-1.592a.75.75 0 011.06 0zM18.75 12a.75.75 0 01-.75.75H15a.75.75 0 010-1.5h3a.75.75 0 01.75.75zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zm8.47 8.47a.75.75 0 01-1.06 0l-1.592-1.592a.75.75 0 011.06-1.06l1.592 1.592a.75.75 0 010 1.06zm-8.47 0a.75.75 0 010-1.06l1.592-1.592a.75.75 0 011.06 1.06l-1.592 1.592a.75.75 0 01-1.06 0zM12 15.75a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75z"/></svg>
+                            <svg class="moon-icon" viewBox="0 0 24 24"><path d="M12 21a9 9 0 01-9-9c0-4.665 2.973-8.685 7.14-10.22A.75.75 0 0110.87 2.9c.143.435-.112.913-.67 1.054a7.5 7.5 0 00-6.15 7.546 7.5 7.5 0 007.5 7.5c2.955 0 5.624-1.258 7.546-3.275a.75.75 0 011.054.67c.142.558-.336.813-.77.67A9 9 0 0112 21z"/></svg>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </aside>
 
-            <section class="section features-section">
-                <h2 class="section-heading">Why Choose sideloading.org?</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon" data-icon="target"></div>
-                        <h3 class="card-title">Simple & Intuitive</h3>
-                        <p class="card-description">Our user-friendly interface guides you through the signing process in just a few clicks, no technical expertise required.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon" data-icon="clock"></div>
-                        <h3 class="card-title">Fast Signing</h3>
-                        <p class="card-description">Our high-speed servers ensure a quick turnaround time, getting you back to your apps faster.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon" data-icon="cyber-security"></div>
-                        <h3 class="card-title">Ultimate Security</h3>
-                        <p class="card-description">Your privacy is our top priority. All files and credentials are encrypted and processed in a secure environment.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon" data-icon="device"></div>
-                        <h3 class="card-title">Cross-Device Compatible</h3>
-                        <p class="card-description">Access our platform from any device. Our site is fully optimized for mobile, tablet, and desktop.</p>
-                    </div>
-                </div>
-            </section>
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-            <section class="section faq-section">
-                <h2 class="section-heading">Frequently Asked Questions</h2>
-                <div class="faq-grid">
-                    <div class="faq-card">
-                        <h3 class="faq-question">What is sideloading?</h3>
-                        <p class="faq-answer">Sideloading refers to the process of installing applications on an iOS device from a source other than the official App Store.</p>
-                    </div>
-                    <div class="faq-card">
-                        <h3 class="faq-question">Is sideloading safe?</h3>
-                        <p class="faq-answer">Sideloading itself is safe. However, the safety of the application depends entirely on the source. Always use trusted IPA files from reputable sources.</p>
-                    </div>
-                    <div class="faq-card">
-                        <h3 class="faq-question">What is an IPA file?</h3>
-                        <p class="faq-answer">An IPA file is an iOS App Store Package file that is the standard format for packaging and distributing applications on iOS devices.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section cta-banner">
-                <div class="cta-content">
-                    <h2 class="cta-title">Start Your Sideloading Journey Today</h2>
-                    <p class="cta-text">Unleash the true power of your device with a few simple clicks. Join the community of advanced users now.</p>
-                    <a href="signer.html" class="btn btn-primary">
-                        Go to Signer
-                        <svg class="btn-icon" viewBox="0 0 24 24"><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/></svg>
+        <main class="main-content">
+            <section class="introduction">
+                <div class="intro-content">
+                    <h1 class="title">
+                        <a href="https://sideloading.org" class="site-link">sideloading.org</a>
+                    </h1>
+                    <p class="catchline">
+                        Where you get to take control of your device.
+                    </p>
+                    <a href="signer.html" class="cta-button">
+                        Start Sideloading
                     </a>
                 </div>
             </section>
-        </div>
-    </main>
 
-    <footer class="footer">
-        <div class="container footer-grid">
-            <div class="footer-column">
-                <span class="logo-text">sideloading.org</span>
-                <p class="footer-description">The professional signing service for iOS applications.</p>
-            </div>
-            <div class="footer-column">
-                <h4 class="footer-heading">Navigation</h4>
-                <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="signer.html">Signer</a></li>
-                    <li><a href="#">Guides</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4 class="footer-heading">Legal</h4>
-                <ul class="footer-links">
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4 class="footer-heading">Connect</h4>
-                <div class="social-links">
-                    <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.164 6.83 9.49.5.092.682-.218.682-.483 0-.237-.008-.867-.013-1.7-2.782.604-3.368-1.34-3.368-1.34-.455-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.004.07 1.532 1.03 1.532 1.03.892 1.528 2.341 1.085 2.91.83.091-.645.349-1.085.635-1.336-2.22-.252-4.555-1.11-4.555-4.943 0-1.09.39-1.984 1.03-2.68-.103-.253-.448-1.27.098-2.648 0 0 .84-.268 2.75 1.026A9.564 9.564 0 0112 6.845c.85.004 1.705.115 2.504.336 1.909-1.294 2.748-1.026 2.748-1.026.546 1.378.202 2.395.099 2.648.64.696 1.03 1.59 1.03 2.68 0 3.843-2.336 4.686-4.564 4.935.359.309.678.92.678 1.855 0 1.337-.012 2.418-.012 2.743 0 .267.18.579.688.482C20.137 20.163 23 16.418 23 12c0-5.523-4.477-10-10-10z"/></svg></a>
+            <section class="carousel-section">
+                <h2 class="carousel-title">
+                    Discover Sideloading Tools & Guides
+                </h2>
+                <div class="carousel-container" id="carouselContainer">
+                    <div class="carousel-track" id="carouselTrack">
+                        <div class="carousel-slide">
+                            <div class="guide-card">
+                                <div class="guide-icon">
+                                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                                </div>
+                                <h3 class="guide-title">
+                                    Easy-to-Follow Guides
+                                </h3>
+                                <p class="guide-description">
+                                    Our tutorials are so easy, you'll be a pro in no time.
+                                </p>
+                                <a href="#" class="guide-button">
+                                    Browse Guides
+                                </a>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="guide-card">
+                                <div class="guide-icon">
+                                    <svg viewBox="0 0 24 24"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1.5-5.5v-3.793l-3.646 3.646L6 14.5l5.5-5.5 5.5 5.5-1.061 1.061L12.5 13.5v3.793z"/></svg>
+                                </div>
+                                <h3 class="guide-title">
+                                    Sideloading Tools
+                                </h3>
+                                <p class="guide-description">
+                                    We've got the best tools to help you get started.
+                                </p>
+                                <a href="signer.html" class="guide-button">
+                                    Get the Signer
+                                </a>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="guide-card">
+                                <div class="guide-icon">
+                                    <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                                </div>
+                                <h3 class="guide-title">
+                                    Community Resources
+                                </h3>
+                                <p class="guide-description">
+                                    Why do it alone? Find help and share with others.
+                                </p>
+                                <a href="#" class="guide-button">
+                                    Join Us
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 sideloading.org. All rights reserved.</p>
-        </div>
-    </footer>
+                <div class="scrollbar-container">
+                    <div class="scrollbar-track" id="scrollbarTrack">
+                        <div class="scrollbar-thumb" id="scrollbarThumb"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
 
-    <script src="js/main.js"></script>
-    <script src="js/snowfall.js"></script>
-
+    <script src="js/general.js"></script>
+    <script src="js/home.js"></script>
 </body>
 </html>
