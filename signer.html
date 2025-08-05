@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +12,7 @@
 </head>
 <body>
     <div class="container">
+        <!-- Header, Sidebar, and Overlay are the same as the home page -->
         <header class="header">
             <div class="header-left">
                 <button class="hamburger-menu" id="hamburgerMenu" aria-label="Open navigation menu">
@@ -21,187 +22,110 @@
                 </button>
             </div>
             <div class="header-right">
-                <nav class="header-nav">
-                    <a href="index.html" class="header-nav-link">Home</a>
-                    <a href="signer.html" class="header-nav-link active">Signer</a>
-                    <a href="#" class="header-nav-link">Guides</a>
-                </nav>
-            </div>
-        </header>
-
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <a href="index.html" class="sidebar-logo">
-                    <svg viewBox="0 0 48 48">
-                        <path d="M24 4C12.95 4 4 12.95 4 24s8.95 20 20 20 20-8.95 20-20S35.05 4 24 4zm-2.9 29.8v-4.65l6.5-6.5h-6.5v-4.65l10.9 10.9-10.9 4.65z"/>
-                    </svg>
-                    Sideloading.org
-                </a>
-                <button class="sidebar-close" id="sidebarClose" aria-label="Close navigation menu">
-                    <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <svg class="sun-icon" viewBox="0 0 24 24"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.766 5.634a.75.75 0 011.06 0l1.592 1.592a.75.75 0 01-1.06 1.06L7.766 6.694a.75.75 0 010-1.06zm8.47 0a.75.75 0 010 1.06l-1.592 1.592a.75.75 0 11-1.06-1.06l1.592-1.592a.75.75 0 011.06 0zM18.75 12a.75.75 0 01-.75.75H15a.75.75 0 010-1.5h3a.75.75 0 01.75.75zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zm8.47 8.47a.75.75 0 01-1.06 0l-1.592-1.592a.75.75 0 011.06-1.06l1.592 1.592a.75.75 0 010 1.06zm-8.47 0a.75.75 0 010-1.06l1.592-1.592a.75.75 0 011.06 1.06l-1.592 1.592a.75.75 0 01-1.06 0zM12 15.75a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75z"/></svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24"><path d="M12 21a9 9 0 01-9-9c0-4.665 2.973-8.685 7.14-10.22A.75.75 0 0110.87 2.9c.143.435-.112.913-.67 1.054a7.5 7.5 0 00-6.15 7.546 7.5 7.5 0 007.5 7.5c2.955 0 5.624-1.258 7.546-3.275a.75.75 0 011.054.67c.142.558-.336.813-.77.67A9 9 0 0112 21z"/></svg>
                 </button>
             </div>
+        </header>
+        <aside class="sidebar" id="sidebar">
             <div class="sidebar-content">
                 <ul class="sidebar-nav">
                     <li class="sidebar-nav-item"><a href="index.html" class="sidebar-nav-link">Home</a></li>
                     <li class="sidebar-nav-item"><a href="signer.html" class="sidebar-nav-link active">Signer</a></li>
-                    <li class="sidebar-nav-item"><a href="#" class="sidebar-nav-link">Guides</a></li>
-                    <li class="sidebar-nav-item">
-                        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-                            <svg class="sun-icon" viewBox="0 0 24 24"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.766 5.634a.75.75 0 011.06 0l1.592 1.592a.75.75 0 01-1.06 1.06L7.766 6.694a.75.75 0 010-1.06zm8.47 0a.75.75 0 010 1.06l-1.592 1.592a.75.75 0 11-1.06-1.06l1.592-1.592a.75.75 0 011.06 0zM18.75 12a.75.75 0 01-.75.75H15a.75.75 0 010-1.5h3a.75.75 0 01.75.75zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zm8.47 8.47a.75.75 0 01-1.06 0l-1.592-1.592a.75.75 0 011.06-1.06l1.592 1.592a.75.75 0 010 1.06zm-8.47 0a.75.75 0 010-1.06l1.592-1.592a.75.75 0 011.06 1.06l-1.592 1.592a.75.75 0 01-1.06 0zM12 15.75a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75z"/></svg>
-                            <svg class="moon-icon" viewBox="0 0 24 24"><path d="M12 21a9 9 0 01-9-9c0-4.665 2.973-8.685 7.14-10.22A.75.75 0 0110.87 2.9c.143.435-.112.913-.67 1.054a7.5 7.5 0 00-6.15 7.546 7.5 7.5 0 007.5 7.5c2.955 0 5.624-1.258 7.546-3.275a.75.75 0 011.054.67c.142.558-.336.813-.77.67A9 9 0 0112 21z"/></svg>
-                        </button>
-                    </li>
                 </ul>
             </div>
         </aside>
-
         <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
         <main class="main-content">
+            <div id="notificationContainer"></div>
+
             <h1 class="page-title">
                 IPA Signer
             </h1>
             <p class="page-description">
-                Grab an IPA file and a certificate, and let us work our magic.
+                Upload your IPA file, enter your credentials, and sign your app for sideloading.
             </p>
-
-            <form class="signer-form" id="signerForm">
+            
+            <form id="signerForm">
+                <!-- IPA File Upload Section -->
                 <section class="form-section">
                     <h2 class="section-title">
-                        Sign an IPA
+                        1. Upload IPA
                     </h2>
                     <div class="form-grid">
-                        <div class="form-group form-group-full">
-                            <label for="ipaFile" class="form-label">IPA File</label>
-                            <div class="file-upload" id="ipaFileUpload">
-                                <span id="ipaFileName">Choose a file...</span>
-                                <button type="button" class="upload-button">
-                                    <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
-                                    Browse
-                                </button>
-                                <input type="file" id="ipaFile" class="hidden-input" accept=".ipa" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="bundleId" class="form-label">Bundle ID (Optional)</label>
-                            <input type="text" id="bundleId" class="form-input" placeholder="com.company.app">
-                        </div>
-                        <div class="form-group">
-                            <label for="appName" class="form-label">App Name (Optional)</label>
-                            <input type="text" id="appName" class="form-input" placeholder="My App">
+                        <div class="input-group full-width">
+                            <label for="ipaFile" class="file-label">
+                                <svg class="file-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zM6 20V4h7v4h5v12H6z"/></svg>
+                                <span id="fileName">Choose an IPA File</span>
+                                <input type="file" id="ipaFile" accept=".ipa" required>
+                            </label>
                         </div>
                     </div>
                 </section>
 
-                <section class="form-section advanced-settings">
-                    <div class="section-header">
-                        <h2 class="section-title">
-                            Advanced Signing Settings
-                        </h2>
-                        <button type="button" class="extras-toggle" id="extrasToggle" aria-expanded="false" aria-controls="extrasContent">
-                            <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
-                        </button>
+                <!-- Signing Credentials Section -->
+                <section class="form-section">
+                    <h2 class="section-title">
+                        2. Signing Credentials
+                    </h2>
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="appleId">Apple ID (Email)</label>
+                            <input type="email" id="appleId" placeholder="example@icloud.com" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="password">App-Specific Password</label>
+                            <input type="password" id="password" placeholder="Enter app-specific password" required>
+                        </div>
+                        <div class="input-group full-width">
+                            <label for="deviceId">Device ID (UDID)</label>
+                            <input type="text" id="deviceId" placeholder="Enter your device's UDID" required>
+                        </div>
                     </div>
-                    <div id="extrasContent" class="extras-content">
+                </section>
+
+                <!-- Extras Section -->
+                <section class="form-section extras-section">
+                    <button type="button" class="extras-toggle" id="extrasToggle" aria-expanded="false">
+                        <span class="extras-text">
+                            Advanced Options
+                        </span>
+                        <svg class="chevron-icon" viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+                    </button>
+                    <div class="extras-content" id="extrasContent">
                         <div class="form-grid">
-                            <div class="form-group">
-                                <div class="toggle-group">
-                                    <label for="enableJIT" class="toggle-label">Enable JIT</label>
-                                    <label class="toggle-switch">
-                                        <input type="checkbox" id="enableJIT">
-                                        <span class="slider round"></span>
-                                    </label>
-                                </div>
+                            <div class="input-group">
+                                <label for="bundleId">New Bundle ID</label>
+                                <input type="text" id="bundleId" placeholder="com.new.bundle.id">
                             </div>
-                            <div class="form-group">
-                                <div class="toggle-group">
-                                    <label for="enablePush" class="toggle-label">Enable Push Notifications</label>
-                                    <label class="toggle-switch">
-                                        <input type="checkbox" id="enablePush">
-                                        <span class="slider round"></span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="form-group form-group-full">
-                                <label for="certificateType" class="form-label">Choose Signing Certificate</label>
-                                <select id="certificateType" class="form-select">
-                                    <option value="none" selected>Select a certificate type</option>
-                                    <option value="p12">P12 Certificate</option>
-                                    <option value="mobileProvision">Mobile Provision</option>
-                                </select>
-                            </div>
-                            <div id="p12Fields" class="form-group-full hidden">
-                                <div class="form-grid">
-                                    <div class="form-group form-group-full">
-                                        <label for="p12File" class="form-label">P12 Certificate</label>
-                                        <div class="file-upload" id="p12FileUpload">
-                                            <span id="p12FileName">Choose a file...</span>
-                                            <button type="button" class="upload-button">
-                                                <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
-                                                Browse
-                                            </button>
-                                            <input type="file" id="p12File" class="hidden-input" accept=".p12">
-                                        </div>
-                                    </div>
-                                    <div class="form-group form-group-full">
-                                        <label for="p12Password" class="form-label">P12 Password</label>
-                                        <input type="password" id="p12Password" class="form-input" placeholder="Password for your P12 file">
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="mobileProvisionFields" class="form-group-full hidden">
-                                <div class="form-grid">
-                                    <div class="form-group form-group-full">
-                                        <label for="mobileProvisionFile" class="form-label">Mobile Provision</label>
-                                        <div class="file-upload" id="mobileProvisionFileUpload">
-                                            <span id="mobileProvisionFileName">Choose a file...</span>
-                                            <button type="button" class="upload-button">
-                                                <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
-                                                Browse
-                                            </button>
-                                            <input type="file" id="mobileProvisionFile" class="hidden-input" accept=".mobileprovision">
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="input-group">
+                                <label for="appName">New App Name</label>
+                                <input type="text" id="appName" placeholder="My Custom App">
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <div class="button-container">
-                    <button type="submit" class="cta-button" id="submitButton">
+                <!-- Submit Button -->
+                <div class="submit-container">
+                    <button type="submit" id="submitButton" class="submit-button">
                         <span id="buttonText">Sign IPA</span>
-                        <div class="loader" id="buttonSpinner" hidden></div>
+                        <svg id="buttonSpinner" class="spinner" viewBox="0 0 50 50">
+                            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                        </svg>
                     </button>
                 </div>
-
-                <div id="notificationContainer"></div>
             </form>
-
-            <section class="form-section generated-info hidden" id="generatedInfo">
-                <h2 class="section-title">Generated IPA Info</h2>
-                <div class="info-grid">
-                    <div class="info-item">
-                        <strong>Bundle ID:</strong>
-                        <span id="infoBundleId"></span>
-                    </div>
-                    <div class="info-item">
-                        <strong>App Name:</strong>
-                        <span id="infoAppName"></span>
-                    </div>
-                    <div class="info-item">
-                        <strong>Download IPA:</strong>
-                        <a href="#" id="downloadLink" class="download-link">Click to Download</a>
-                    </div>
-                </div>
-            </section>
         </main>
+        
+        <footer class="footer">
+            <p>&copy; 2024 Sideloading.org. All rights reserved.</p>
+        </footer>
     </div>
-
+    
     <script src="js/general.js"></script>
-    <script src="js/home.js"></script>
     <script src="js/signer.js"></script>
 </body>
 </html>

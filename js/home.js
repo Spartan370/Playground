@@ -1,113 +1,108 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const container = document.getElementById('carouselContainer');
-    const track = document.getElementById('carouselTrack');
+    // Carousel Functionality
+    const carouselContainer = document.getElementById('carouselContainer');
+    const carouselTrack = document.getElementById('carouselTrack');
+    const scrollbarTrack = document.getElementById('scrollbarTrack');
     const scrollbarThumb = document.getElementById('scrollbarThumb');
-    const scrollbarTrack = scrollbarThumb.parentElement;
-    const themeToggle = document.getElementById('themeToggle');
-    const sunIcon = themeToggle.querySelector('.sun-icon');
-    const moonIcon = themeToggle.querySelector('.moon-icon');
 
     let isDragging = false;
-    let startX = 0;
-    let scrollLeft = 0;
+    let startX;
+    let scrollLeft;
+    let trackWidth;
+    let thumbWidth;
 
-    // Theme toggle logic
-    const currentTheme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    updateIcon(currentTheme);
-
-    themeToggle.addEventListener('click', () => {
-        const theme = document.documentElement.getAttribute('data-theme');
-        const newTheme = theme === 'dark' ? 'light' : 'dark';
-
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateIcon(newTheme);
-    });
-
-    function updateIcon(theme) {
-        if (theme === 'dark') {
-            sunIcon.style.display = 'none';
-            moonIcon.style.display = 'block';
-        } else {
-            sunIcon.style.display = 'block';
-            moonIcon.style.display = 'none';
-        }
-    }
-
-    // Carousel scrollbar logic
+    // Calculate initial dimensions and position
     function updateScrollbar() {
-        if (!container) return;
+        trackWidth = carouselContainer.offsetWidth;
+        const scrollWidth = carouselTrack.scrollWidth;
+        const scrollPosition = carouselContainer.scrollLeft;
 
-        const scrollWidth = track.scrollWidth;
-        const clientWidth = container.clientWidth;
-        const scrollLeft = container.scrollLeft;
+        // Calculate thumb width and position
+        thumbWidth = (trackWidth / scrollWidth) * trackWidth;
+        const thumbPosition = (scrollPosition / scrollWidth) * trackWidth;
 
-        // Only show scrollbar if content overflows
-        if (scrollWidth <= clientWidth) {
-            scrollbarTrack.style.display = 'none';
-            return;
-        } else {
-            scrollbarTrack.style.display = 'block';
-        }
-
-        const thumbWidth = Math.max(40, (clientWidth / scrollWidth) * scrollbarTrack.clientWidth);
-        scrollbarThumb.style.width = thumbWidth + 'px';
-
-        const maxScroll = scrollWidth - clientWidth;
-        const thumbPosition = maxScroll > 0 ? (scrollLeft / maxScroll) * (scrollbarTrack.clientWidth - thumbWidth) : 0;
-        scrollbarThumb.style.left = thumbPosition + 'px';
+        // Set thumb width and position
+        scrollbarThumb.style.width = `${thumbWidth}px`;
+        scrollbarThumb.style.transform = `translateX(${thumbPosition}px)`;
     }
 
-    container.addEventListener('scroll', updateScrollbar);
-
-    scrollbarThumb.addEventListener('mousedown', (e) => {
+    // Handle mouse down event for dragging
+    carouselContainer.addEventListener('mousedown', (e) => {
         isDragging = true;
-        startX = e.pageX - scrollbarThumb.offsetLeft;
-        scrollLeft = container.scrollLeft;
-
-        document.addEventListener('mousemove', handleMouseMove);
-        document.addEventListener('mouseup', handleMouseUp);
-
-        e.preventDefault();
+        startX = e.pageX - carouselContainer.offsetLeft;
+        scrollLeft = carouselContainer.scrollLeft;
+        carouselContainer.style.cursor = 'grabbing';
     });
 
+    // Handle mouse leave event
+    carouselContainer.addEventListener('mouseleave', () => {
+        isDragging = false;
+        carouselContainer.style.cursor = 'grab';
+    });
+
+    // Handle mouse up event
+    carouselContainer.addEventListener('mouseup', () => {
+        isDragging = false;
+        carouselContainer.style.cursor = 'grab';
+    });
+
+    // Handle mouse move event
+    carouselContainer.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - carouselContainer.offsetLeft;
+        const walk = (x - startX) * 2; // Multiplier for faster scrolling
+        carouselContainer.scrollLeft = scrollLeft - walk;
+    });
+
+    // Handle scroll event to update scrollbar thumb
+    carouselContainer.addEventListener('scroll', updateScrollbar);
+
+    // Initial update
+    updateScrollbar();
+
+    // Update on window resize
+    window.addEventListener('resize', updateScrollbar);
+
+    // Add click event for the scrollbar to jump to a specific position
     scrollbarTrack.addEventListener('click', (e) => {
-        if (e.target === scrollbarThumb) return;
-
-        const rect = scrollbarTrack.getBoundingClientRect();
-        const clickX = e.clientX - rect.left;
-        const scrollbarWidth = scrollbarTrack.clientWidth;
-        const thumbWidth = scrollbarThumb.offsetWidth;
-
-        const scrollRatio = clickX / scrollbarWidth;
-        const maxScroll = track.scrollWidth - container.clientWidth;
-        const newScrollLeft = scrollRatio * maxScroll;
-
-        container.scrollTo({
-            left: newScrollLeft,
+        const clickX = e.pageX - scrollbarTrack.getBoundingClientRect().left;
+        const newScrollPosition = (clickX / trackWidth) * carouselTrack.scrollWidth - (carouselContainer.offsetWidth / 2);
+        carouselContainer.scrollTo({
+            left: newScrollPosition,
             behavior: 'smooth'
         });
     });
 
-    function handleMouseMove(e) {
-        if (!isDragging) return;
+    // Keyboard navigation for carousel
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            carouselContainer.scrollBy({
+                left: -350, // width of one slide
+                behavior: 'smooth'
+            });
+        }
+        if (e.key === 'ArrowRight') {
+            carouselContainer.scrollBy({
+                left: 350, // width of one slide
+                behavior: 'smooth'
+            });
+        }
+    });
 
-        e.preventDefault();
-        const x = e.pageX - startX;
-        const scrollbarWidth = scrollbarTrack.clientWidth - scrollbarThumb.offsetWidth;
-        const scrollRatio = x / scrollbarWidth;
-        const maxScroll = track.scrollWidth - container.clientWidth;
+    // Touch events for carousel on mobile
+    let touchStartX = 0;
+    let touchMoveX = 0;
+    
+    carouselContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+    });
 
-        container.scrollLeft = scrollRatio * maxScroll;
-    }
+    carouselContainer.addEventListener('touchmove', (e) => {
+        touchMoveX = e.touches[0].clientX;
+        const diff = touchStartX - touchMoveX;
+        carouselContainer.scrollLeft += diff;
+        touchStartX = touchMoveX;
+    });
 
-    function handleMouseUp() {
-        isDragging = false;
-        document.removeEventListener('mousemove', handleMouseMove);
-        document.removeEventListener('mouseup', handleMouseUp);
-    }
-
-    window.addEventListener('resize', updateScrollbar);
-    window.addEventListener('load', updateScrollbar);
 });

@@ -1,130 +1,134 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Select all necessary elements from the DOM
+    // DOM elements
     const signerForm = document.getElementById('signerForm');
     const ipaFile = document.getElementById('ipaFile');
-    const ipaFileName = document.getElementById('ipaFileName');
-    const bundleIdInput = document.getElementById('bundleId');
-    const appNameInput = document.getElementById('appName');
-    const submitButton = document.getElementById('submitButton');
-    const buttonText = document.getElementById('buttonText');
-    const buttonSpinner = document.getElementById('buttonSpinner');
+    const fileNameDisplay = document.getElementById('fileName');
     const extrasToggle = document.getElementById('extrasToggle');
     const extrasContent = document.getElementById('extrasContent');
-    const chevronIcon = extrasToggle.querySelector('.chevron-icon');
-    const certificateTypeSelect = document.getElementById('certificateType');
-    const p12Fields = document.getElementById('p12Fields');
-    const p12File = document.getElementById('p12File');
-    const p12FileName = document.getElementById('p12FileName');
-    const mobileProvisionFields = document.getElementById('mobileProvisionFields');
-    const mobileProvisionFile = document.getElementById('mobileProvisionFile');
-    const mobileProvisionFileName = document.getElementById('mobileProvisionFileName');
-    const generatedInfoSection = document.getElementById('generatedInfo');
-    const infoBundleId = document.getElementById('infoBundleId');
-    const infoAppName = document.getElementById('infoAppName');
-    const downloadLink = document.getElementById('downloadLink');
+    const submitButton = document.getElementById('submitButton');
+    const buttonText = document.getElementById('buttonText');
     const notificationContainer = document.getElementById('notificationContainer');
 
-    // Handle file input changes to display the file name
-    ipaFile.addEventListener('change', () => {
-        ipaFileName.textContent = ipaFile.files.length ? ipaFile.files[0].name : 'Choose a file...';
-    });
-
-    p12File.addEventListener('change', () => {
-        p12FileName.textContent = p12File.files.length ? p12File.files[0].name : 'Choose a file...';
-    });
-
-    mobileProvisionFile.addEventListener('change', () => {
-        mobileProvisionFileName.textContent = mobileProvisionFile.files.length ? mobileProvisionFile.files[0].name : 'Choose a file...';
-    });
-
-    // Toggle the advanced settings section
-    extrasToggle.addEventListener('click', function() {
-        const isExpanded = extrasContent.classList.contains('active');
-        if (isExpanded) {
-            extrasContent.classList.remove('active');
-            extrasToggle.setAttribute('aria-expanded', 'false');
-            chevronIcon.style.transform = 'rotate(0deg)';
+    // Event listener for the file input change
+    ipaFile.addEventListener('change', function() {
+        if (this.files.length > 0) {
+            fileNameDisplay.textContent = this.files[0].name;
+            fileNameDisplay.style.color = 'var(--text-primary)';
         } else {
-            extrasContent.classList.add('active');
-            extrasToggle.setAttribute('aria-expanded', 'true');
-            chevronIcon.style.transform = 'rotate(180deg)';
+            fileNameDisplay.textContent = 'Choose an IPA File';
+            fileNameDisplay.style.color = 'var(--text-secondary)';
         }
     });
 
-    // Show/hide certificate fields based on selection
-    certificateTypeSelect.addEventListener('change', function() {
-        p12Fields.classList.add('hidden');
-        mobileProvisionFields.classList.add('hidden');
-        if (this.value === 'p12') {
-            p12Fields.classList.remove('hidden');
-        } else if (this.value === 'mobileProvision') {
-            mobileProvisionFields.classList.remove('hidden');
-        }
+    // Event listener for the advanced options toggle
+    extrasToggle.addEventListener('click', () => {
+        const isExpanded = extrasToggle.getAttribute('aria-expanded') === 'true' || false;
+        extrasToggle.setAttribute('aria-expanded', !isExpanded);
+        extrasContent.classList.toggle('active');
+        extrasToggle.classList.toggle('expanded');
     });
 
-    // Function to create and show notifications
-    function showNotification(message, type = 'error') {
-        const notification = document.createElement('div');
-        notification.className = `notification ${type}`;
-        notification.innerHTML = `
-            <p>${message}</p>
-            <button class="close-button">
-                <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-            </button>
-        `;
-        notificationContainer.appendChild(notification);
-        notification.querySelector('.close-button').addEventListener('click', () => {
-            notification.classList.add('fade-out');
-            notification.addEventListener('animationend', () => notification.remove());
-        });
-        setTimeout(() => {
-            notification.classList.add('fade-out');
-            notification.addEventListener('animationend', () => notification.remove());
-        }, 5000);
-    }
-
-    // Handle form submission
-    signerForm.addEventListener('submit', function(e) {
+    // Event listener for form submission
+    signerForm.addEventListener('submit', async function(e) {
         e.preventDefault();
 
-        // Validate form inputs (e.g., check if IPA file is selected)
-        if (!ipaFile.files.length) {
-            showNotification('Please select an IPA file to sign.', 'error');
+        // Disable button and show spinner
+        submitButton.disabled = true;
+        buttonText.textContent = 'Signing...';
+        
+        // Form validation
+        if (!validateForm()) {
+            submitButton.disabled = false;
+            buttonText.textContent = 'Sign IPA';
             return;
         }
 
-        // Show loading state
-        submitButton.disabled = true;
-        buttonText.hidden = true;
-        buttonSpinner.hidden = false;
-        generatedInfoSection.classList.add('hidden');
+        // Simulating the signing process
+        try {
+            showNotification('info', 'Signing process started. This may take a few moments...');
+            await new Promise(resolve => setTimeout(resolve, 3000)); // Simulate API call or processing time
 
-        // Simulate a signing process (replace with actual fetch call to a backend)
-        setTimeout(() => {
-            const isSuccess = Math.random() > 0.1; // 90% chance of success
-            if (isSuccess) {
-                // Mock response data
-                const mockData = {
-                    success: true,
-                    bundleId: bundleIdInput.value || 'com.example.mockapp',
-                    appName: appNameInput.value || 'Mock Signed App',
-                    downloadUrl: '#' // In a real app, this would be a real URL
-                };
+            // Generate a fake download link
+            const fakeDownloadUrl = URL.createObjectURL(new Blob(['This is a fake signed IPA file.'], { type: 'application/octet-stream' }));
 
-                // Display success info
-                infoBundleId.textContent = mockData.bundleId;
-                infoAppName.textContent = mockData.appName;
-                downloadLink.href = mockData.downloadUrl;
-                generatedInfoSection.classList.remove('hidden');
-                showNotification('IPA signed successfully!', 'success');
-            } else {
-                showNotification('Signing failed. Please try again.', 'error');
-            }
+            showNotification('success', 'IPA file signed successfully!');
+            showDownloadLink(fakeDownloadUrl);
 
-            // Reset loading state
+        } catch (error) {
+            console.error('Signing failed:', error);
+            showNotification('error', 'Signing failed. Please check your credentials and try again.');
+        } finally {
+            // Re-enable button and hide spinner
             submitButton.disabled = false;
-            buttonText.hidden = false;
-            buttonSpinner.hidden = true;
-        }, 3000); // Simulate a 3-second delay for the signing process
+            buttonText.textContent = 'Sign IPA';
+        }
     });
+
+    // Function to validate the form
+    function validateForm() {
+        const requiredInputs = signerForm.querySelectorAll('input[required]');
+        for (const input of requiredInputs) {
+            if (!input.value) {
+                showNotification('error', `Please fill in the '${input.labels[0].textContent}' field.`);
+                input.focus();
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // Function to show a notification
+    function showNotification(type, message) {
+        const notification = document.createElement('div');
+        notification.classList.add('notification', type);
+        
+        let iconSvg;
+        if (type === 'success') {
+            iconSvg = `<svg class="notification-icon" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>`;
+        } else if (type === 'error') {
+            iconSvg = `<svg class="notification-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>`;
+        } else { // info
+            iconSvg = `<svg class="notification-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-6h-2v6zm0-8h2V7h-2v2z"/></svg>`;
+        }
+        
+        notification.innerHTML = `
+            ${iconSvg}
+            <span class="notification-text">${message}</span>
+            <button class="notification-close" aria-label="Close notification">&times;</button>
+        `;
+        
+        notificationContainer.appendChild(notification);
+        
+        // Close the notification automatically after 5 seconds
+        const timeout = setTimeout(() => {
+            notification.remove();
+        }, 5000);
+        
+        // Allow manual closing
+        notification.querySelector('.notification-close').addEventListener('click', () => {
+            notification.remove();
+            clearTimeout(timeout);
+        });
+    }
+
+    // Function to show the download link for the signed IPA
+    function showDownloadLink(url) {
+        const downloadNotification = document.createElement('div');
+        downloadNotification.classList.add('notification', 'success');
+        downloadNotification.style.animationDelay = '0.5s';
+        
+        downloadNotification.innerHTML = `
+            <svg class="notification-icon" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+            <span class="notification-text">Your signed IPA is ready. <a href="${url}" download="signed-app.ipa" class="download-link">Click here to download.</a></span>
+            <button class="notification-close" aria-label="Close notification">&times;</button>
+        `;
+        
+        notificationContainer.appendChild(downloadNotification);
+        
+        // Allow manual closing
+        downloadNotification.querySelector('.notification-close').addEventListener('click', () => {
+            downloadNotification.remove();
+            URL.revokeObjectURL(url); // Clean up the object URL
+        });
+    }
 });
