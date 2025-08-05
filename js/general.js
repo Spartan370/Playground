@@ -1,80 +1,82 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Theme Toggle Functionality
+/* general.js - Handles global site functionality */
+
+document.addEventListener('DOMContentLoaded', () => {
+    // === DOM Element References ===
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarClose = document.getElementById('sidebarClose');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
     const themeToggle = document.getElementById('themeToggle');
     const sunIcon = themeToggle.querySelector('.sun-icon');
     const moonIcon = themeToggle.querySelector('.moon-icon');
 
-    // Get theme from local storage or default to 'dark'
-    const currentTheme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    updateIcon(currentTheme);
-    
-    // Add click event listener to toggle theme
-    themeToggle.addEventListener('click', () => {
-        const theme = document.documentElement.getAttribute('data-theme');
-        const newTheme = theme === 'dark' ? 'light' : 'dark';
-        
-        // Update the theme in local storage and the data attribute
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateIcon(newTheme);
-    });
-    
-    // Function to update the sun/moon icon based on the current theme
-    function updateIcon(theme) {
-        if (theme === 'dark') {
-            sunIcon.style.display = 'none';
-            moonIcon.style.display = 'block';
+    // === Sidebar Navigation Logic ===
+    /**
+     * Opens the sidebar and displays the overlay.
+     */
+    const openSidebar = () => {
+        sidebar.classList.add('open');
+        sidebarOverlay.classList.add('visible');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling when sidebar is open
+    };
+
+    /**
+     * Closes the sidebar and hides the overlay.
+     */
+    const closeSidebar = () => {
+        sidebar.classList.remove('open');
+        sidebarOverlay.classList.remove('visible');
+        document.body.style.overflow = ''; // Restore scrolling
+    };
+
+    // Add event listeners for sidebar actions
+    if (hamburgerMenu) {
+        hamburgerMenu.addEventListener('click', openSidebar);
+    }
+    if (sidebarClose) {
+        sidebarClose.addEventListener('click', closeSidebar);
+    }
+    if (sidebarOverlay) {
+        sidebarOverlay.addEventListener('click', closeSidebar);
+    }
+
+    // === Theme Toggle Logic ===
+    /**
+     * Toggles the website's color theme between light and dark.
+     */
+    const toggleTheme = () => {
+        document.body.classList.toggle('dark-theme');
+        const isDark = document.body.classList.contains('dark-theme');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        updateThemeIcons(isDark);
+    };
+
+    /**
+     * Updates the visibility of the sun and moon icons based on the current theme.
+     * @param {boolean} isDark - True if the dark theme is active, false otherwise.
+     */
+    const updateThemeIcons = (isDark) => {
+        if (isDark) {
+            if (sunIcon) sunIcon.style.display = 'none';
+            if (moonIcon) moonIcon.style.display = 'block';
         } else {
-            sunIcon.style.display = 'block';
-            moonIcon.style.display = 'none';
+            if (sunIcon) sunIcon.style.display = 'block';
+            if (moonIcon) moonIcon.style.display = 'none';
         }
+    };
+
+    // Apply the saved theme preference on page load
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+        updateThemeIcons(true);
+    } else {
+        document.body.classList.remove('dark-theme');
+        updateThemeIcons(false);
     }
 
-    // Sidebar and Hamburger Menu Functionality
-    const hamburgerMenu = document.getElementById('hamburgerMenu');
-    const sidebar = document.getElementById('sidebar');
-    const sidebarOverlay = document.getElementById('sidebarOverlay');
-    const sidebarClose = document.getElementById('sidebarClose');
-    const header = document.querySelector('.header');
-    const mainContent = document.querySelector('.main-content');
-    const body = document.body;
-
-    // Add click event to open the sidebar
-    hamburgerMenu.addEventListener('click', () => {
-        sidebar.classList.add('active');
-        sidebarOverlay.classList.add('active');
-        hamburgerMenu.classList.add('active');
-        header.classList.add('blurred');
-        mainContent.classList.add('blurred');
-        body.style.overflow = 'hidden';
-    });
-
-    // Function to close the sidebar
-    function closeSidebar() {
-        sidebar.classList.remove('active');
-        sidebarOverlay.classList.remove('active');
-        hamburgerMenu.classList.remove('active');
-        header.classList.remove('blurred');
-        mainContent.classList.remove('blurred');
-        body.style.overflow = '';
+    // Add click event listener to the theme toggle button
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
     }
-
-    // Add click events to close the sidebar
-    sidebarOverlay.addEventListener('click', closeSidebar);
-    sidebarClose.addEventListener('click', closeSidebar);
-
-    // Add keyboard event listener to close the sidebar with the Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && sidebar.classList.contains('active')) {
-            closeSidebar();
-        }
-    });
-
-    // Close sidebar on resize if the viewport is larger than 768px
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768 && sidebar.classList.contains('active')) {
-            closeSidebar();
-        }
-    });
 });
