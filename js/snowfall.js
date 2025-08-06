@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const numberOfRaindrops = 200;
+        const numberOfRaindrops = 300;
         const width = container.offsetWidth;
         const height = container.offsetHeight;
 
