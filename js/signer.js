@@ -8,10 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadingSpinner = signButton.querySelector('.loading-spinner');
     const signerStatus = document.getElementById('signerStatus');
 
+    // Handle file input click
     uploadArea.addEventListener('click', () => {
         ipaFileInput.click();
     });
 
+    // Handle file selection
     ipaFileInput.addEventListener('change', (event) => {
         const file = event.target.files[0];
         if (file) {
@@ -19,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Handle drag and drop events
     uploadArea.addEventListener('dragover', (event) => {
         event.preventDefault();
         uploadArea.classList.add('dragover');
@@ -37,9 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ipaFileInput.files = event.dataTransfer.files;
             handleFile(file);
         } else {
-            displayStatus('Oops! Please drop an IPA file.', 'error');
-            fileInfoBox.style.display = 'none';
-            uploadArea.classList.remove('has-file');
+            displayStatus('Please upload a valid .ipa file.', 'error');
         }
     });
 
@@ -50,30 +51,34 @@ document.addEventListener('DOMContentLoaded', () => {
         signerStatus.textContent = '';
     }
 
+    // Handle form submission
     signerForm.addEventListener('submit', (event) => {
         event.preventDefault();
         
         const file = ipaFileInput.files[0];
 
         if (!file) {
-            displayStatus('Uh oh! You need to pick an IPA file first.', 'error');
+            displayStatus('Please select an IPA file to sign.', 'error');
             return;
         }
 
+        // Show loading state
         signButton.disabled = true;
         signButton.innerHTML = 'Signing... <span class="loading-spinner"></span>';
         loadingSpinner.style.display = 'inline-block';
         signerStatus.textContent = '';
         
+        // Simulate an asynchronous signing process
         setTimeout(() => {
             const isSuccess = Math.random() > 0.3; 
 
             if (isSuccess) {
-                displayStatus('Awesome! Your IPA file is signed! It should start downloading soon.', 'success');
+                displayStatus('IPA file signed successfully! Your download will start shortly.', 'success');
             } else {
-                displayStatus('Oh no! Something went wrong while signing. Please try again.', 'error');
+                displayStatus('An error occurred during signing. Please try again.', 'error');
             }
 
+            // Reset button state
             signButton.disabled = false;
             signButton.innerHTML = 'Sign IPA';
             loadingSpinner.style.display = 'none';
@@ -85,7 +90,5 @@ document.addEventListener('DOMContentLoaded', () => {
         signerStatus.textContent = message;
         signerStatus.className = 'signer-status';
         signerStatus.classList.add('status-' + type);
-        signerStatus.style.opacity = '1';
-        signerStatus.style.transform = 'translateY(0)';
     }
 });
