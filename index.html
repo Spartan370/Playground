@@ -26,128 +26,230 @@
                     <a href="#" class="nav-link">Contact</a>
                 </nav>
                 <div class="header-actions">
-                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode">
-                        <div class="toggle-icon moon"></div>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <!-- Sun icon for light theme -->
+                        <svg class="toggle-icon sun" viewBox="0 0 24 24" style="display: none;">
+                            <path d="M12 2.5c-.28 0-.5.22-.5.5v2c0 .28.22.5.5.5s.5-.22.5-.5v-2c0-.28-.22-.5-.5-.5zm0 17c-.28 0-.5.22-.5.5v2c0 .28.22.5.5.5s.5-.22.5-.5v-2c0-.28-.22-.5-.5-.5zM5.636 5.636c-.2-.2-.51-.2-.707 0l-1.414 1.414c-.2.2-.2.51 0 .707s.51.2.707 0l1.414-1.414c.2-.2.2-.51 0-.707zm12.728 12.728c-.2-.2-.51-.2-.707 0l-1.414 1.414c-.2.2-.2.51 0 .707s.51.2.707 0l1.414-1.414c.2-.2.2-.51 0-.707zM3 12c0-.28.22-.5.5-.5h2c.28 0 .5.22.5.5s-.22.5-.5.5h-2c-.28 0-.5-.22-.5-.5zm17 0c0-.28.22-.5.5-.5h2c.28 0 .5.22.5.5s-.22.5-.5.5h-2c-.28 0-.5-.22-.5-.5zM5.636 18.364c.2-.2.51-.2.707 0l1.414 1.414c.2.2.2.51 0 .707s-.51.2-.707 0l-1.414-1.414c-.2-.2-.2-.51 0-.707zm12.728-12.728c.2-.2.51-.2.707 0l1.414 1.414c.2.2.2.51 0 .707s-.51.2-.707 0l-1.414-1.414c-.2-.2-.2-.51 0-.707zM12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5s5-2.24 5-5s-2.24-5-5-5z" />
+                        </svg>
+                        <!-- Moon icon for dark theme -->
+                        <svg class="toggle-icon moon" viewBox="0 0 24 24">
+                            <path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.12-1.36a.75.75 0 0 1 .86-.86A10.5 10.5 0 1 1 12 2.5z" />
+                        </svg>
                     </button>
-                    <button class="menu-toggle" id="menuToggle" aria-label="Open mobile menu">
-                        <span class="menu-icon"></span>
-                        <span class="menu-icon"></span>
+                    <button class="hamburger-menu" id="hamburgerMenu" aria-label="Open menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
                     </button>
                 </div>
             </div>
         </div>
     </header>
 
+    <!-- Sidebar for mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <button class="sidebar-close" id="sidebarClose">&times;</button>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-link active">Home</a>
+            <a href="signer.html" class="nav-link">Signer</a>
+            <a href="#" class="nav-link">Guides</a>
+            <a href="#" class="nav-link">Contact</a>
+        </nav>
+    </aside>
+
     <main class="main-content">
-        <div class="container">
-            <section class="hero-section" id="hero">
-                <div class="snowfall-container"></div>
+        <section class="hero-section" id="hero">
+            <div class="container">
                 <div class="hero-content">
-                    <h1 class="hero-title">Your Trusted IPA Signing Platform</h1>
-                    <p class="hero-subtitle">sideloading.org provides a seamless and secure way to sign and install any IPA file on your iOS device, without a jailbreak.</p>
+                    <h1 class="hero-title">Sign Your Apps Easily.</h1>
+                    <p class="hero-subtitle">Make your apps work on your device without any trouble. It's super easy and fast!</p>
                     <div class="hero-actions">
                         <a href="signer.html" class="btn btn-primary">
-                            Start Signing Now
-                            <svg class="btn-icon" viewBox="0 0 24 24"><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/></svg>
+                            Get Started
+                            <svg class="btn-icon" viewBox="0 0 24 24"><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"></path></svg>
                         </a>
                         <a href="#" class="btn btn-secondary">Learn More</a>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section class="section features-section">
-                <h2 class="section-heading">Why Choose sideloading.org?</h2>
+        <section class="section features-section">
+            <div class="container">
+                <h2 class="section-title">Why Use Our Service?</h2>
                 <div class="features-grid">
                     <div class="feature-card">
-                        <div class="feature-icon" data-icon="target"></div>
-                        <h3 class="card-title">Simple & Intuitive</h3>
-                        <p class="card-description">Our user-friendly interface guides you through the signing process in just a few clicks, no technical expertise required.</p>
+                        <span class="feature-icon">⚡</span>
+                        <h3 class="feature-title">Super Fast</h3>
+                        <p class="feature-description">We sign your apps really quickly so you don't have to wait around.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon" data-icon="clock"></div>
-                        <h3 class="card-title">Fast Signing</h3>
-                        <p class="card-description">Our high-speed servers ensure a quick turnaround time, getting you back to your apps faster.</p>
+                        <span class="feature-icon">🔒</span>
+                        <h3 class="feature-title">Super Safe</h3>
+                        <p class="feature-description">Your files are safe with us. We keep your stuff private and secure.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon" data-icon="cyber-security"></div>
-                        <h3 class="card-title">Ultimate Security</h3>
-                        <p class="card-description">Your privacy is our top priority. All files and credentials are encrypted and processed in a secure environment.</p>
+                        <span class="feature-icon">✅</span>
+                        <h3 class="feature-title">Easy to Use</h3>
+                        <p class="feature-description">It's so simple, anyone can do it. Just a few clicks and you're done!</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-icon" data-icon="device"></div>
-                        <h3 class="card-title">Cross-Device Compatible</h3>
-                        <p class="card-description">Access our platform from any device. Our site is fully optimized for mobile, tablet, and desktop.</p>
+                        <span class="feature-icon">🌍</span>
+                        <h3 class="feature-title">Works Everywhere</h3>
+                        <p class="feature-description">Our service works on all your devices, no matter what kind you have.</p>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section class="section faq-section">
-                <h2 class="section-heading">Frequently Asked Questions</h2>
+        <section class="section carousel-section">
+            <div class="container">
+                <h2 class="section-title">What People Say</h2>
+                <div class="carousel-wrapper">
+                    <div class="carousel-container" id="carouselContainer">
+                        <div class="carousel-track" id="carouselTrack">
+                            <div class="carousel-item">
+                                <div class="carousel-item-header">
+                                    <img src="https://placehold.co/50x50/BB86FC/FFFFFF?text=A" alt="User Avatar" class="carousel-item-avatar">
+                                    <div class="carousel-item-info">
+                                        <strong>Alex R.</strong>
+                                        <span>Happy User</span>
+                                    </div>
+                                </div>
+                                <div class="carousel-item-rating">⭐⭐⭐⭐⭐</div>
+                                <p class="carousel-item-text">"This service is awesome! I can finally use all my favorite apps without any problems. It's super helpful!"</p>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="carousel-item-header">
+                                    <img src="https://placehold.co/50x50/BB86FC/FFFFFF?text=B" alt="User Avatar" class="carousel-item-avatar">
+                                    <div class="carousel-item-info">
+                                        <strong>Ben S.</strong>
+                                        <span>Tech Enthusiast</span>
+                                    </div>
+                                </div>
+                                <div class="carousel-item-rating">⭐⭐⭐⭐⭐</div>
+                                <p class="carousel-item-text">"I was worried it would be hard, but it was really easy. My apps work great now. Thanks a lot!"</p>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="carousel-item-header">
+                                    <img src="https://placehold.co/50x50/BB86FC/FFFFFF?text=C" alt="User Avatar" class="carousel-item-avatar">
+                                    <div class="carousel-item-info">
+                                        <strong>Chloe L.</strong>
+                                        <span>Student</span>
+                                    </div>
+                                </div>
+                                <div class="carousel-item-rating">⭐⭐⭐⭐⭐</div>
+                                <p class="carousel-item-text">"I needed to sign an app for school, and this site made it so simple. It saved me a lot of time and stress."</p>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="carousel-item-header">
+                                    <img src="https://placehold.co/50x50/BB86FC/FFFFFF?text=D" alt="User Avatar" class="carousel-item-avatar">
+                                    <div class="carousel-item-info">
+                                        <strong>David M.</strong>
+                                        <span>Developer</span>
+                                    </div>
+                                </div>
+                                <div class="carousel-item-rating">⭐⭐⭐⭐⭐</div>
+                                <p class="carousel-item-text">"As a developer, I appreciate how smoothly this works. It's a reliable tool for testing and using custom apps."</p>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="carousel-item-header">
+                                    <img src="https://placehold.co/50x50/BB86FC/FFFFFF?text=E" alt="User Avatar" class="carousel-item-avatar">
+                                    <div class="carousel-item-info">
+                                        <strong>Emily P.</strong>
+                                        <span>Casual User</span>
+                                    </div>
+                                </div>
+                                <div class="carousel-item-rating">⭐⭐⭐⭐⭐</div>
+                                <p class="carousel-item-text">"I'm not super techy, but I figured this out quickly. It's great for getting apps that aren't in the app store."</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scrollbar-track" id="scrollbarTrack">
+                        <div class="scrollbar-thumb" id="scrollbarThumb"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section faq-section">
+            <div class="container">
+                <h2 class="section-title">Common Questions</h2>
                 <div class="faq-grid">
                     <div class="faq-card">
                         <h3 class="faq-question">What is sideloading?</h3>
-                        <p class="faq-answer">Sideloading refers to the process of installing applications on an iOS device from a source other than the official App Store.</p>
+                        <p class="faq-answer">Sideloading means putting apps on your device without using the official app store. It's like installing an app directly.</p>
                     </div>
                     <div class="faq-card">
-                        <h3 class="faq-question">Is sideloading safe?</h3>
-                        <p class="faq-answer">Sideloading itself is safe. However, the safety of the application depends entirely on the source. Always use trusted IPA files from reputable sources.</p>
+                        <h3 class="faq-question">Is it safe to sideload apps?</h3>
+                        <p class="faq-answer">It can be safe if you get apps from places you trust. Our service helps make it safer by signing them correctly.</p>
                     </div>
                     <div class="faq-card">
-                        <h3 class="faq-question">What is an IPA file?</h3>
-                        <p class="faq-answer">An IPA file is an iOS App Store Package file that is the standard format for packaging and distributing applications on iOS devices.</p>
+                        <h3 class="faq-question">What kind of files can I sign?</h3>
+                        <p class="faq-answer">You can sign IPA files, which are like app files for Apple devices. Just upload them here.</p>
+                    </div>
+                    <div class="faq-card">
+                        <h3 class="faq-question">How long does signing take?</h3>
+                        <p class="faq-answer">It usually takes just a few seconds. We try to make it as fast as possible for you.</p>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section class="section cta-banner">
-                <div class="cta-content">
-                    <h2 class="cta-title">Start Your Sideloading Journey Today</h2>
-                    <p class="cta-text">Unleash the true power of your device with a few simple clicks. Join the community of advanced users now.</p>
-                    <a href="signer.html" class="btn btn-primary">
-                        Go to Signer
-                        <svg class="btn-icon" viewBox="0 0 24 24"><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/></svg>
-                    </a>
-                </div>
-            </section>
-        </div>
+        <section class="section cta-banner">
+            <div class="cta-content">
+                <h2 class="cta-title">Start Using Apps Your Way!</h2>
+                <p class="cta-text">Get your apps working on your device easily. Join lots of other users right now.</p>
+                <a href="signer.html" class="btn btn-primary">
+                    Go to Signer
+                    <svg class="btn-icon" viewBox="0 0 24 24"><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"></path></svg>
+                </a>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">
-        <div class="container footer-grid">
-            <div class="footer-column">
-                <span class="logo-text">sideloading.org</span>
-                <p class="footer-description">The professional signing service for iOS applications.</p>
-            </div>
-            <div class="footer-column">
-                <h4 class="footer-heading">Navigation</h4>
-                <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="signer.html">Signer</a></li>
-                    <li><a href="#">Guides</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4 class="footer-heading">Legal</h4>
-                <ul class="footer-links">
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4 class="footer-heading">Connect</h4>
-                <div class="social-links">
-                    <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.164 6.83 9.49.5.092.682-.218.682-.483 0-.237-.008-.867-.013-1.7-2.782.604-3.368-1.34-3.368-1.34-.455-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.004.07 1.532 1.03 1.532 1.03.892 1.528 2.341 1.085 2.91.83.091-.645.349-1.085.635-1.336-2.22-.252-4.555-1.11-4.555-4.943 0-1.09.39-1.984 1.03-2.68-.103-.253-.448-1.27.098-2.648 0 0 .84-.268 2.75 1.026A9.564 9.564 0 0112 6.845c.85.004 1.705.115 2.504.336 1.909-1.294 2.748-1.026 2.748-1.026.546 1.378.202 2.395.099 2.648.64.696 1.03 1.59 1.03 2.68 0 3.843-2.336 4.686-4.564 4.935.359.309.678.92.678 1.855 0 1.337-.012 2.418-.012 2.743 0 .267.18.579.688.482C20.137 20.163 23 16.418 23 12c0-5.523-4.477-10-10-10z"/></svg></a>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <span class="logo-text">sideloading.org</span>
+                    <p class="footer-description">Your go-to place for signing IPA files easily and securely. We make sideloading simple for everyone.</p>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="signer.html">Signer</a></li>
+                        <li><a href="#">Guides</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-heading">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-heading">Connect</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.164 6.83 9.49.5.092.682-.218.682-.483 0-.237-.008-.867-.013-1.7-2.782.604-3.368-1.34-3.368-1.34-.455-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.004.07 1.532 1.03 1.532 1.03.892 1.528 2.341 1.085 2.91.83.091-.645.349-1.085.635-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.09.39-1.983 1.03-2.675-.1-.253-.448-1.26.097-2.646 0 0 .84-.268 2.75 1.025.798-.222 1.649-.333 2.5-.337.85.004 1.702.115 2.5.337 1.91-1.293 2.75-1.025 2.75-1.025.546 1.386.2 2.393.097 2.646.64.692 1.03 1.585 1.03 2.675 0 3.843-2.338 4.687-4.562 4.935.359.307.678.915.678 1.846 0 1.336-.012 2.415-.012 2.742 0 .268.18.579.688.482C21.137 20.161 24 16.416 24 12c0-5.523-4.477-10-10-10z"></path></svg></a>
+                        <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M22.46 6c-.77.34-1.6.56-2.46.66.89-.54 1.57-1.4 1.88-2.42-.83.49-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.4 0-4.35 1.95-4.35 4.35 0 .34.04.67.11.98C8.1 9.4 5.14 7.82 3.1 5.03c-.35.6-.55 1.29-.55 2.02 0 1.51.77 2.84 1.95 3.62-.72-.02-1.4-.22-2-.55v.05c0 2.12 1.5 3.88 3.5 4.29-.36.1-.74.15-1.13.15-.28 0-.55-.03-.81-.08.56 1.75 2.18 3.02 4.1 3.06-1.49 1.17-3.37 1.87-5.43 1.87-.35 0-.7-.02-1.04-.06C2.9 20.29 5.3 21 7.9 21c9.4 0 14.55-7.8 14.55-14.55 0-.22-.01-.43-.01-.65z"></path></svg></a>
+                        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 13.5h2.5l1-4H14v-2c0-1.54 0-3.5 3.5-3.5H20V.59C19.33.47 18.07.36 16.5 0c-2.84 0-4.7 1.7-4.7 4.7v2.8H7V13.5h4V24h6V13.5h3z"></path></svg></a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 sideloading.org. All rights reserved.</p>
+            <div class="footer-bottom">
+                &copy; 2024 sideloading.org. All rights reserved.
+            </div>
         </div>
     </footer>
 
+    <script src="js/general.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/home.js"></script>
     <script src="js/snowfall.js"></script>
-
 </body>
 </html>
